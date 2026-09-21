@@ -1,0 +1,925 @@
+<html><head><meta charset='utf-8'>
+<title>NPZ Time Alignment Validation: UBFCPhys_RAW</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; }
+        h1, h2 { margin-bottom: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 24px; }
+        th, td { border: 1px solid #cccccc; padding: 6px 8px; font-size: 13px; }
+        th { background: #f2f2f2; }
+        .good { background: #e8f7e8; }
+        .warn { background: #fff6dd; }
+        .fail { background: #fdeaea; }
+        img { max-width: 1100px; width: 100%; border: 1px solid #ddd; margin-bottom: 28px; }
+        .small { color: #555; font-size: 13px; }
+    </style>
+    
+</head><body>
+<h1>NPZ Time Alignment Validation: UBFCPhys_RAW</h1>
+<p class='small'>This report checks internal NPZ time consistency and likely GT/RGB co-timing. It does not reconstruct hidden original timestamps outside the NPZ.</p>
+<h2>Summary</h2>
+<table>
+<tr><th>file</th><th>dataset</th><th>status</th><th>lengths_match</th><th>t_monotonic</th><th>fs_est</th><th>video_duration_s</th><th>best_lag_sec</th><th>peak_corr</th><th>zero_lag_corr</th></tr>
+<tr class='good'>
+<td>s10_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>GOOD_near_zero_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.056918435881385676</td>
+<td>-0.6311575215667801</td>
+<td>-0.5120719225376872</td>
+</tr>
+<tr class='warn'>
+<td>s10_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.9921452558484987</td>
+<td>-0.2315384933625501</td>
+<td>-0.08547207840858069</td>
+</tr>
+<tr class='warn'>
+<td>s10_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.2845921794069284</td>
+<td>-0.0935283995826174</td>
+<td>0.03682117516737982</td>
+</tr>
+<tr class='warn'>
+<td>s11_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.223746371449792</td>
+<td>0.1444738059405556</td>
+<td>0.025464631285969912</td>
+</tr>
+<tr class='warn'>
+<td>s11_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.34151061528831406</td>
+<td>-0.07134465506281776</td>
+<td>0.029195251066406358</td>
+</tr>
+<tr class='warn'>
+<td>s11_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.9921452558484987</td>
+<td>0.09229704311766214</td>
+<td>-0.021107328012060358</td>
+</tr>
+<tr class='warn'>
+<td>s12_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.2522055893904849</td>
+<td>-0.7995647716538768</td>
+<td>0.284969049419875</td>
+</tr>
+<tr class='warn'>
+<td>s12_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.9960726279242493</td>
+<td>0.0807526833954009</td>
+<td>0.0023139591157027317</td>
+</tr>
+<tr class='warn'>
+<td>s12_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.9921452558484987</td>
+<td>0.04670700885342528</td>
+<td>-0.020022932649107004</td>
+</tr>
+<tr class='warn'>
+<td>s13_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.5122659229324711</td>
+<td>-0.24987164095740255</td>
+<td>0.02610826652740805</td>
+</tr>
+<tr class='good'>
+<td>s13_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>GOOD_near_zero_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.056918435881385676</td>
+<td>0.09515170776786999</td>
+<td>0.08799314506293898</td>
+</tr>
+<tr class='warn'>
+<td>s13_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.052991063805635</td>
+<td>0.07056213536058649</td>
+<td>0.012383876785634398</td>
+</tr>
+<tr class='warn'>
+<td>s14_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.7968581023393995</td>
+<td>-0.4315145397913259</td>
+<td>0.14429468316449232</td>
+</tr>
+<tr class='warn'>
+<td>s14_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.25613296146623554</td>
+<td>0.07528906205425345</td>
+<td>-0.020943761218212197</td>
+</tr>
+<tr class='warn'>
+<td>s14_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.34151061528831406</td>
+<td>0.03363803544343467</td>
+<td>-0.029482935550529877</td>
+</tr>
+<tr class='warn'>
+<td>s15_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.1383687176277135</td>
+<td>-0.31250633449113085</td>
+<td>0.024417960645677337</td>
+</tr>
+<tr class='warn'>
+<td>s15_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.39842905116969973</td>
+<td>-0.1355068269817094</td>
+<td>0.12255141693126506</td>
+</tr>
+<tr class='warn'>
+<td>s15_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.8537765382207851</td>
+<td>-0.11016103637649823</td>
+<td>0.009435753987141266</td>
+</tr>
+<tr class='good'>
+<td>s16_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>GOOD_near_zero_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.08537765382207851</td>
+<td>-0.4109306810723952</td>
+<td>-0.28185233639139196</td>
+</tr>
+<tr class='warn'>
+<td>s16_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.39842905116969973</td>
+<td>-0.06614191090904283</td>
+<td>0.021949159670837538</td>
+</tr>
+<tr class='warn'>
+<td>s16_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.565256986738106</td>
+<td>0.11100355324547968</td>
+<td>-0.002130895481074916</td>
+</tr>
+<tr class='warn'>
+<td>s17_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.3130513973476212</td>
+<td>-0.7771116965196038</td>
+<td>0.6272967286568819</td>
+</tr>
+<tr class='warn'>
+<td>s17_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.7929307302636488</td>
+<td>0.15349386798263714</td>
+<td>0.08807104258372632</td>
+</tr>
+<tr class='warn'>
+<td>s17_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.711480448517321</td>
+<td>-0.09374913648469392</td>
+<td>-0.0007705955570177334</td>
+</tr>
+<tr class='good'>
+<td>s18_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>GOOD_near_zero_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.08537765382207851</td>
+<td>-0.30694750403633175</td>
+<td>-0.18436904309689717</td>
+</tr>
+<tr class='warn'>
+<td>s18_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.7360122943822631</td>
+<td>-0.26824318540994063</td>
+<td>0.12408301856631022</td>
+</tr>
+<tr class='warn'>
+<td>s18_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.764471512322956</td>
+<td>0.1808454175066267</td>
+<td>-0.03621938566595702</td>
+</tr>
+<tr class='warn'>
+<td>s19_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.2276737435255427</td>
+<td>-0.6820938091108808</td>
+<td>0.1798333136279657</td>
+</tr>
+<tr class='warn'>
+<td>s19_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.9636860379078058</td>
+<td>0.1298074895716833</td>
+<td>0.02634850821392552</td>
+</tr>
+<tr class='warn'>
+<td>s19_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.8498491661450345</td>
+<td>-0.13276410249281342</td>
+<td>-0.04858533540764395</td>
+</tr>
+<tr class='warn'>
+<td>s1_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.25613296146623554</td>
+<td>-0.18342226171822895</td>
+<td>0.11690432672138297</td>
+</tr>
+<tr class='warn'>
+<td>s1_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.9391541920428637</td>
+<td>0.13152435435136</td>
+<td>-0.022133383733469042</td>
+</tr>
+<tr class='warn'>
+<td>s1_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.8213899482043416</td>
+<td>-0.22787156069419706</td>
+<td>-0.06440068730720391</td>
+</tr>
+<tr class='warn'>
+<td>s20_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.711480448517321</td>
+<td>-0.48066551914679356</td>
+<td>-0.15442255212612813</td>
+</tr>
+<tr class='warn'>
+<td>s20_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.17075530764415703</td>
+<td>-0.07291491654290956</td>
+<td>-0.029746884037821233</td>
+</tr>
+<tr class='warn'>
+<td>s20_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.3130513973476212</td>
+<td>0.1522082094740072</td>
+<td>-0.11188721524874576</td>
+</tr>
+<tr class='warn'>
+<td>s2_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.5407251408731639</td>
+<td>-0.9006160129429459</td>
+<td>0.6300900920910267</td>
+</tr>
+<tr class='warn'>
+<td>s2_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.9921452558484987</td>
+<td>-0.16462788550339486</td>
+<td>-0.0043899031157405965</td>
+</tr>
+<tr class='warn'>
+<td>s2_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.711480448517321</td>
+<td>-0.06320889646085963</td>
+<td>-0.04443075674805269</td>
+</tr>
+<tr class='good'>
+<td>s3_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>GOOD_near_zero_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.08537765382207851</td>
+<td>-0.475947216294931</td>
+<td>-0.2998232791948583</td>
+</tr>
+<tr class='warn'>
+<td>s3_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.2522055893904849</td>
+<td>0.11136265457612628</td>
+<td>0.09058339191471586</td>
+</tr>
+<tr class='warn'>
+<td>s3_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.9921452558484987</td>
+<td>-0.10814640212015254</td>
+<td>0.0316968385576019</td>
+</tr>
+<tr class='warn'>
+<td>s4_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.42688826911039257</td>
+<td>0.219434465499985</td>
+<td>-0.1147815828598792</td>
+</tr>
+<tr class='warn'>
+<td>s4_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.7683988843987066</td>
+<td>-0.10484007881411635</td>
+<td>0.021093495577897713</td>
+</tr>
+<tr class='warn'>
+<td>s4_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.7399396664580138</td>
+<td>0.08421344236843145</td>
+<td>0.023226803735403118</td>
+</tr>
+<tr class='warn'>
+<td>s5_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.1099094996870207</td>
+<td>-0.3719955398891513</td>
+<td>0.1577079615006848</td>
+</tr>
+<tr class='warn'>
+<td>s5_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.2845921794069284</td>
+<td>0.06794230242145653</td>
+<td>-0.03751241965607234</td>
+</tr>
+<tr class='warn'>
+<td>s5_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>OK_small_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.11383687176277135</td>
+<td>-0.17169974405625227</td>
+<td>-0.12387903064889089</td>
+</tr>
+<tr class='warn'>
+<td>s6_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.9391541920428637</td>
+<td>-0.6748902680075566</td>
+<td>0.45014950675911203</td>
+</tr>
+<tr class='warn'>
+<td>s6_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.8213899482043416</td>
+<td>-0.11012210290373477</td>
+<td>0.06224476514125523</td>
+</tr>
+<tr class='warn'>
+<td>s6_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.3091240252718706</td>
+<td>-0.060139592653196176</td>
+<td>-0.01877271943156104</td>
+</tr>
+<tr class='warn'>
+<td>s7_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.4514201149753347</td>
+<td>-0.47501332163576465</td>
+<td>0.12006709988208633</td>
+</tr>
+<tr class='warn'>
+<td>s7_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.8213899482043416</td>
+<td>0.06467989307517773</td>
+<td>0.000632415784650502</td>
+</tr>
+<tr class='warn'>
+<td>s7_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>1.7075530764415703</td>
+<td>-0.05452402013867325</td>
+<td>0.02153255210030125</td>
+</tr>
+<tr class='warn'>
+<td>s8_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.94763503898915</td>
+<td>-1.4798793329160276</td>
+<td>-0.08720773152468736</td>
+<td>0.0036007662565017877</td>
+</tr>
+<tr class='warn'>
+<td>s8_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-0.4553474870510854</td>
+<td>-0.10813035572876316</td>
+<td>0.08709674068711921</td>
+</tr>
+<tr class='warn'>
+<td>s8_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.8253173202800923</td>
+<td>0.08270355476308908</td>
+<td>0.022411345393884036</td>
+</tr>
+<tr class='warn'>
+<td>s9_T1.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>0.9391541920428637</td>
+<td>0.1148401878559359</td>
+<td>-0.038000757435590365</td>
+</tr>
+<tr class='warn'>
+<td>s9_T2.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.4514201149753347</td>
+<td>-0.08529668081874965</td>
+<td>0.031144838284586647</td>
+</tr>
+<tr class='warn'>
+<td>s9_T3.npz</td>
+<td>UBFC-Phys</td>
+<td>WARN_large_lag</td>
+<td>True</td>
+<td>True</td>
+<td>35.13799999999772</td>
+<td>179.97609425692983</td>
+<td>-1.1099094996870207</td>
+<td>0.08481343695757042</td>
+<td>-0.01580696319934458</td>
+</tr>
+</table>
+<h2>Plots</h2>
+<h3>s10_T1.npz</h3>
+<p class='small'>status=GOOD_near_zero_lag | best_lag_sec=-0.056918435881385676 | peak_corr=-0.6311575215667801</p>
+<img src='plots/s10_T1_alignment_check.png' alt='s10_T1.npz'>
+<h3>s10_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.9921452558484987 | peak_corr=-0.2315384933625501</p>
+<img src='plots/s10_T2_alignment_check.png' alt='s10_T2.npz'>
+<h3>s10_T3.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=-0.2845921794069284 | peak_corr=-0.0935283995826174</p>
+<img src='plots/s10_T3_alignment_check.png' alt='s10_T3.npz'>
+<h3>s11_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.223746371449792 | peak_corr=0.1444738059405556</p>
+<img src='plots/s11_T1_alignment_check.png' alt='s11_T1.npz'>
+<h3>s11_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.34151061528831406 | peak_corr=-0.07134465506281776</p>
+<img src='plots/s11_T2_alignment_check.png' alt='s11_T2.npz'>
+<h3>s11_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.9921452558484987 | peak_corr=0.09229704311766214</p>
+<img src='plots/s11_T3_alignment_check.png' alt='s11_T3.npz'>
+<h3>s12_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.2522055893904849 | peak_corr=-0.7995647716538768</p>
+<img src='plots/s12_T1_alignment_check.png' alt='s12_T1.npz'>
+<h3>s12_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.9960726279242493 | peak_corr=0.0807526833954009</p>
+<img src='plots/s12_T2_alignment_check.png' alt='s12_T2.npz'>
+<h3>s12_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.9921452558484987 | peak_corr=0.04670700885342528</p>
+<img src='plots/s12_T3_alignment_check.png' alt='s12_T3.npz'>
+<h3>s13_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.5122659229324711 | peak_corr=-0.24987164095740255</p>
+<img src='plots/s13_T1_alignment_check.png' alt='s13_T1.npz'>
+<h3>s13_T2.npz</h3>
+<p class='small'>status=GOOD_near_zero_lag | best_lag_sec=0.056918435881385676 | peak_corr=0.09515170776786999</p>
+<img src='plots/s13_T2_alignment_check.png' alt='s13_T2.npz'>
+<h3>s13_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.052991063805635 | peak_corr=0.07056213536058649</p>
+<img src='plots/s13_T3_alignment_check.png' alt='s13_T3.npz'>
+<h3>s14_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.7968581023393995 | peak_corr=-0.4315145397913259</p>
+<img src='plots/s14_T1_alignment_check.png' alt='s14_T1.npz'>
+<h3>s14_T2.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=0.25613296146623554 | peak_corr=0.07528906205425345</p>
+<img src='plots/s14_T2_alignment_check.png' alt='s14_T2.npz'>
+<h3>s14_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.34151061528831406 | peak_corr=0.03363803544343467</p>
+<img src='plots/s14_T3_alignment_check.png' alt='s14_T3.npz'>
+<h3>s15_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.1383687176277135 | peak_corr=-0.31250633449113085</p>
+<img src='plots/s15_T1_alignment_check.png' alt='s15_T1.npz'>
+<h3>s15_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.39842905116969973 | peak_corr=-0.1355068269817094</p>
+<img src='plots/s15_T2_alignment_check.png' alt='s15_T2.npz'>
+<h3>s15_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.8537765382207851 | peak_corr=-0.11016103637649823</p>
+<img src='plots/s15_T3_alignment_check.png' alt='s15_T3.npz'>
+<h3>s16_T1.npz</h3>
+<p class='small'>status=GOOD_near_zero_lag | best_lag_sec=0.08537765382207851 | peak_corr=-0.4109306810723952</p>
+<img src='plots/s16_T1_alignment_check.png' alt='s16_T1.npz'>
+<h3>s16_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.39842905116969973 | peak_corr=-0.06614191090904283</p>
+<img src='plots/s16_T2_alignment_check.png' alt='s16_T2.npz'>
+<h3>s16_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.565256986738106 | peak_corr=0.11100355324547968</p>
+<img src='plots/s16_T3_alignment_check.png' alt='s16_T3.npz'>
+<h3>s17_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.3130513973476212 | peak_corr=-0.7771116965196038</p>
+<img src='plots/s17_T1_alignment_check.png' alt='s17_T1.npz'>
+<h3>s17_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.7929307302636488 | peak_corr=0.15349386798263714</p>
+<img src='plots/s17_T2_alignment_check.png' alt='s17_T2.npz'>
+<h3>s17_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.711480448517321 | peak_corr=-0.09374913648469392</p>
+<img src='plots/s17_T3_alignment_check.png' alt='s17_T3.npz'>
+<h3>s18_T1.npz</h3>
+<p class='small'>status=GOOD_near_zero_lag | best_lag_sec=-0.08537765382207851 | peak_corr=-0.30694750403633175</p>
+<img src='plots/s18_T1_alignment_check.png' alt='s18_T1.npz'>
+<h3>s18_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.7360122943822631 | peak_corr=-0.26824318540994063</p>
+<img src='plots/s18_T2_alignment_check.png' alt='s18_T2.npz'>
+<h3>s18_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.764471512322956 | peak_corr=0.1808454175066267</p>
+<img src='plots/s18_T3_alignment_check.png' alt='s18_T3.npz'>
+<h3>s19_T1.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=0.2276737435255427 | peak_corr=-0.6820938091108808</p>
+<img src='plots/s19_T1_alignment_check.png' alt='s19_T1.npz'>
+<h3>s19_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.9636860379078058 | peak_corr=0.1298074895716833</p>
+<img src='plots/s19_T2_alignment_check.png' alt='s19_T2.npz'>
+<h3>s19_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.8498491661450345 | peak_corr=-0.13276410249281342</p>
+<img src='plots/s19_T3_alignment_check.png' alt='s19_T3.npz'>
+<h3>s1_T1.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=-0.25613296146623554 | peak_corr=-0.18342226171822895</p>
+<img src='plots/s1_T1_alignment_check.png' alt='s1_T1.npz'>
+<h3>s1_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.9391541920428637 | peak_corr=0.13152435435136</p>
+<img src='plots/s1_T2_alignment_check.png' alt='s1_T2.npz'>
+<h3>s1_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.8213899482043416 | peak_corr=-0.22787156069419706</p>
+<img src='plots/s1_T3_alignment_check.png' alt='s1_T3.npz'>
+<h3>s20_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.711480448517321 | peak_corr=-0.48066551914679356</p>
+<img src='plots/s20_T1_alignment_check.png' alt='s20_T1.npz'>
+<h3>s20_T2.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=0.17075530764415703 | peak_corr=-0.07291491654290956</p>
+<img src='plots/s20_T2_alignment_check.png' alt='s20_T2.npz'>
+<h3>s20_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.3130513973476212 | peak_corr=0.1522082094740072</p>
+<img src='plots/s20_T3_alignment_check.png' alt='s20_T3.npz'>
+<h3>s2_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.5407251408731639 | peak_corr=-0.9006160129429459</p>
+<img src='plots/s2_T1_alignment_check.png' alt='s2_T1.npz'>
+<h3>s2_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.9921452558484987 | peak_corr=-0.16462788550339486</p>
+<img src='plots/s2_T2_alignment_check.png' alt='s2_T2.npz'>
+<h3>s2_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.711480448517321 | peak_corr=-0.06320889646085963</p>
+<img src='plots/s2_T3_alignment_check.png' alt='s2_T3.npz'>
+<h3>s3_T1.npz</h3>
+<p class='small'>status=GOOD_near_zero_lag | best_lag_sec=-0.08537765382207851 | peak_corr=-0.475947216294931</p>
+<img src='plots/s3_T1_alignment_check.png' alt='s3_T1.npz'>
+<h3>s3_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.2522055893904849 | peak_corr=0.11136265457612628</p>
+<img src='plots/s3_T2_alignment_check.png' alt='s3_T2.npz'>
+<h3>s3_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.9921452558484987 | peak_corr=-0.10814640212015254</p>
+<img src='plots/s3_T3_alignment_check.png' alt='s3_T3.npz'>
+<h3>s4_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.42688826911039257 | peak_corr=0.219434465499985</p>
+<img src='plots/s4_T1_alignment_check.png' alt='s4_T1.npz'>
+<h3>s4_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.7683988843987066 | peak_corr=-0.10484007881411635</p>
+<img src='plots/s4_T2_alignment_check.png' alt='s4_T2.npz'>
+<h3>s4_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.7399396664580138 | peak_corr=0.08421344236843145</p>
+<img src='plots/s4_T3_alignment_check.png' alt='s4_T3.npz'>
+<h3>s5_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.1099094996870207 | peak_corr=-0.3719955398891513</p>
+<img src='plots/s5_T1_alignment_check.png' alt='s5_T1.npz'>
+<h3>s5_T2.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=0.2845921794069284 | peak_corr=0.06794230242145653</p>
+<img src='plots/s5_T2_alignment_check.png' alt='s5_T2.npz'>
+<h3>s5_T3.npz</h3>
+<p class='small'>status=OK_small_lag | best_lag_sec=-0.11383687176277135 | peak_corr=-0.17169974405625227</p>
+<img src='plots/s5_T3_alignment_check.png' alt='s5_T3.npz'>
+<h3>s6_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.9391541920428637 | peak_corr=-0.6748902680075566</p>
+<img src='plots/s6_T1_alignment_check.png' alt='s6_T1.npz'>
+<h3>s6_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.8213899482043416 | peak_corr=-0.11012210290373477</p>
+<img src='plots/s6_T2_alignment_check.png' alt='s6_T2.npz'>
+<h3>s6_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.3091240252718706 | peak_corr=-0.060139592653196176</p>
+<img src='plots/s6_T3_alignment_check.png' alt='s6_T3.npz'>
+<h3>s7_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.4514201149753347 | peak_corr=-0.47501332163576465</p>
+<img src='plots/s7_T1_alignment_check.png' alt='s7_T1.npz'>
+<h3>s7_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.8213899482043416 | peak_corr=0.06467989307517773</p>
+<img src='plots/s7_T2_alignment_check.png' alt='s7_T2.npz'>
+<h3>s7_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=1.7075530764415703 | peak_corr=-0.05452402013867325</p>
+<img src='plots/s7_T3_alignment_check.png' alt='s7_T3.npz'>
+<h3>s8_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.4798793329160276 | peak_corr=-0.08720773152468736</p>
+<img src='plots/s8_T1_alignment_check.png' alt='s8_T1.npz'>
+<h3>s8_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-0.4553474870510854 | peak_corr=-0.10813035572876316</p>
+<img src='plots/s8_T2_alignment_check.png' alt='s8_T2.npz'>
+<h3>s8_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.8253173202800923 | peak_corr=0.08270355476308908</p>
+<img src='plots/s8_T3_alignment_check.png' alt='s8_T3.npz'>
+<h3>s9_T1.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=0.9391541920428637 | peak_corr=0.1148401878559359</p>
+<img src='plots/s9_T1_alignment_check.png' alt='s9_T1.npz'>
+<h3>s9_T2.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.4514201149753347 | peak_corr=-0.08529668081874965</p>
+<img src='plots/s9_T2_alignment_check.png' alt='s9_T2.npz'>
+<h3>s9_T3.npz</h3>
+<p class='small'>status=WARN_large_lag | best_lag_sec=-1.1099094996870207 | peak_corr=0.08481343695757042</p>
+<img src='plots/s9_T3_alignment_check.png' alt='s9_T3.npz'>
+</body></html>
