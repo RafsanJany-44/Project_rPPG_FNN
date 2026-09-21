@@ -1075,6 +1075,46 @@ class FusionBranchAttention(nn.Module):
         return a[:,0]*o1 + a[:,1]*o2 + a[:,2]*o3
 
 
+class FusionFreqFFN(nn.Module):
+    """Strategy 6 — frequency-domain feature fusion.
+
+    Motivation:
+        The gating fusions (SE, lightweight, branch) collapse the temporal
+        axis with a global average pool before deciding channel importance,
+        so branch features interact only through a single per-channel scalar.
+        Pulse is periodic: the discriminative structure lives in WHERE each
+        channel places its spectral energy and WHETHER channels agree at the
+        pulse frequency. That structure is destroyed by the pool.
+
+    Mechanism:
+        The concatenated branch features are projected into a shared fusion
+        space and passed through ComplexSpectralMixer (the in-house FNO-style
+        block: rfft over time -> complex channel mixing per frequency bin ->
+        irfft, with an internal residual and InstanceNorm). Channels — i.e.
+        the projected branch features — interact per frequency bin, with no
+        temporal collapse until the final 1x1 projection to the pulse.
+
+        Layout is channels-first [B, C, T] throughout, matching the fusion
+        tensor exactly. InstanceNorm inside the mixer uses per-instance
+        statistics at train and eval (no running-stat train/eval gap), which
+        suits full-video evaluation and deterministic mode.
+
+    Interface matches every other fusion strategy:
+        __init__(total_ch, branch3_ch); forward(feat, f1, f2, f3) -> [B, 1, T].
+    branch3_ch is accepted for signature compatibility and is unused here.
+    """
+    def __init__(self, total_ch, branch3_ch, hidden: int = 64, mlp_ratio: int = 2):
+        super().__init__()
+        self.proj_in = nn.Conv1d(total_ch, hidden, kernel_size=1, bias=True)
+        self.mixer   = ComplexSpectralMixer(dim=hidden, mlp_ratio=mlp_ratio)
+        self.out     = nn.Conv1d(hidden, 1, kernel_size=1, bias=True)
+
+    def forward(self, feat, f1, f2, f3):
+        h = self.proj_in(feat)   # [B, hidden, T] — branches into shared fusion space
+        h = self.mixer(h)        # [B, hidden, T] — spectral channel interaction (+ internal residual)
+        return self.out(h)       # [B, 1, T]
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # THREE-BRANCH MODEL
 #
@@ -1103,6 +1143,7 @@ _FUSION = {
     "se_attention":          FusionSEAttention,
     "lightweight_attention": FusionLightweightAttention,
     "branch_attention":      FusionBranchAttention,
+    "freq_ffn":              FusionFreqFFN,
 }
 _BACKBONE = {"mi": MiUNetBackbone, "mmi": MMiUNetBackbone}
 
@@ -1233,6 +1274,7 @@ MODEL_REGISTRY = {
     "three_branch_mi_static_linear":         lambda: ThreeBranchModel("static_linear", "mi"),
     "three_branch_mi_mlp":                   lambda: ThreeBranchModel("mlp", "mi"),
     "three_branch_mi_se_attention":          lambda: ThreeBranchModel("se_attention", "mi"),
+    "three_branch_mi_freq_ffn":              lambda: ThreeBranchModel("freq_ffn", "mi"),
     "three_branch_mi_lightweight_attention": lambda: ThreeBranchModel("lightweight_attention", "mi"),
     "three_branch_mi_branch_attention":      lambda: ThreeBranchModel("branch_attention", "mi"),
 
@@ -1263,6 +1305,7 @@ MODEL_REGISTRY = {
     # ══════════════════════════════════════════════════════════════════════════
     "b1_3w_b2_raw_b3_mi__SL":   lambda: ThreeBranchModel("static_linear", "mi"),
     "b1_3w_b2_raw_b3_mi__SE":   lambda: ThreeBranchModel("se_attention", "mi"),
+    "b1_3w_b2_raw_b3_mi__FREQ": lambda: ThreeBranchModel("freq_ffn", "mi"),
 
     # ══════════════════════════════════════════════════════════════════════════
     # FAMILY 11 — THREE-BRANCH FUSION: 6-WEIGHT B1 + RAW B2
@@ -1367,7 +1410,7 @@ SWEEP_ORDER_FUSION_6W_RAW = [
 ]
 
 # ── Family 12: three-branch fusion (6w+alpha B1 + raw B2) ──────────────────
-SWEEP_ORDER = [
+SWEEP_ORDER_0 = [
     "b1_3w_b2_raw_b3_mi__SE"
 ]
 
