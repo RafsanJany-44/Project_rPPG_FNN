@@ -1409,10 +1409,6 @@ SWEEP_ORDER_FUSION_6W_RAW = [
     "b1_6w_b2_raw_b3_mi__SE",
 ]
 
-# ── Family 12: three-branch fusion (6w+alpha B1 + raw B2) ──────────────────
-SWEEP_ORDER_0 = [
-    "b1_3w_b2_raw_b3_mi__SE"
-]
 
 
 
@@ -1423,10 +1419,9 @@ SWEEP_ORDER_0 = [
 #SWEEP_ORDER = SWEEP_ORDER_FUSION_MI + SWEEP_ORDER_FUSION_6W + SWEEP_ORDER_FUSION_6W_RAW
 
 SWEEP_ORDER = [
-    "three_branch_mi_se_attention",       #Current best model
+    "three_branch_mi_se_attention",   # locked SE baseline
+    "three_branch_mi_freq_ffn",       # NEW frequency-domain fusion
 ]
-
-
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

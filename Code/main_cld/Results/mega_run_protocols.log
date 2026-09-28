@@ -1,0 +1,39 @@
+[2026-09-29 01:58:45] ==========================================================================
+[2026-09-29 01:58:45] MEGA RUN start | device=cuda | models=2 | protocols=['old', 'prism', 'toolbox'] | epochs<= 50 | root=C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\Results
+[2026-09-29 01:58:45] models: ['three_branch_mi_se_attention', 'three_branch_mi_freq_ffn']
+[2026-09-29 01:58:45] ==========================================================================
+[2026-09-29 01:58:45] --------------------------------------------------------------------------
+[2026-09-29 01:58:45] [1/2] MODEL: three_branch_mi_se_attention
+[2026-09-29 01:58:46]   built 'three_branch_mi_se_attention': params=170006, reach=96 samples (3.20s @30fps)
+[2026-09-29 01:58:46]   ERROR on 'three_branch_mi_se_attention': Our dataset has 0 valid sequences for split=train. Check manifest/paths.
+[2026-09-29 01:58:46] Traceback (most recent call last):
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\launch_train.py", line 500, in main
+    train_info = train_one_model(name, save_dir)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\launch_train.py", line 219, in train_one_model
+    ds_train = NPZRandomWindowDataset(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\ds_npz_windows.py", line 304, in __init__
+    raise RuntimeError(f"Our dataset has 0 valid sequences for split={split}. Check manifest/paths.")
+RuntimeError: Our dataset has 0 valid sequences for split=train. Check manifest/paths.
+
+[2026-09-29 01:58:46] --------------------------------------------------------------------------
+[2026-09-29 01:58:46] [2/2] MODEL: three_branch_mi_freq_ffn
+[2026-09-29 01:58:46]   built 'three_branch_mi_freq_ffn': params=220556, reach=96 samples (3.20s @30fps)
+[2026-09-29 01:58:46]   ERROR on 'three_branch_mi_freq_ffn': Our dataset has 0 valid sequences for split=train. Check manifest/paths.
+[2026-09-29 01:58:46] Traceback (most recent call last):
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\launch_train.py", line 500, in main
+    train_info = train_one_model(name, save_dir)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\launch_train.py", line 219, in train_one_model
+    ds_train = NPZRandomWindowDataset(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\ds_npz_windows.py", line 304, in __init__
+    raise RuntimeError(f"Our dataset has 0 valid sequences for split={split}. Check manifest/paths.")
+RuntimeError: Our dataset has 0 valid sequences for split=train. Check manifest/paths.
+
+[2026-09-29 01:58:46] ==========================================================================
+[2026-09-29 01:58:46] MEGA RUN complete. Summary -> C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\Results\MEGA_SUMMARY.csv
+[2026-09-29 01:58:46] Ablation table   -> C:\Users\RAZER\Documents\GitHub\Project_rPPG_FNN\Code\main_cld\Results\MEGA_PROTOCOL_ABLATION.csv
+[2026-09-29 01:58:46] ==========================================================================
+[2026-09-29 01:58:46] Generating dashboard...

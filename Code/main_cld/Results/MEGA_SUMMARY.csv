@@ -1,0 +1,3 @@
+model,protocol,status
+three_branch_mi_se_attention,-,FAILED: Our dataset has 0 valid sequences for split=train. Check manifest/paths.
+three_branch_mi_freq_ffn,-,FAILED: Our dataset has 0 valid sequences for split=train. Check manifest/paths.

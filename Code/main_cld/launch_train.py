@@ -80,8 +80,7 @@ from model_ZOO import build_model, SWEEP_ORDER
 # Where every model's folder is created.
 
 RESULTS_ROOT = Path(
-    "/media/data/rPPG/Code/GitHub/Project_rPPG_Result/"
-    "Result_Lab_1_SE_Concentration_loss_deltaMargin-bpm3"   
+    "C:\\Users\\RAZER\\Documents\\GitHub\\Project_rPPG_FNN\\Code\\main_cld\\Results"
 )
 
 # Name of the multi-protocol evaluation module (the new eval script).
@@ -109,12 +108,10 @@ PROTOCOL_OVERRIDES: dict[str, dict] = {
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Training manifest (the AUGmented split used by HIT_train.py).
-TRAIN_MANIFEST = ("/media/data/rPPG/Code/GitHub/Project_rPPG/Dataset/3_ROI/"
-                  "PURE-x-UBFC-x-Tokoyo/manifest_split_AUG_BALANCED.csv")
+TRAIN_MANIFEST = ("C:\\Users\\RAZER\\Documents\\GitHub\\Project_rPPG_FNN\\Dataset\\Dataset\\3_ROI\\PURE-x-UBFC-x-Tokoyo_Manifest\\manifest_split_AUG.csv")
 
 # The manifest used for EVALUATION (may differ from the training manifest).
-EVAL_MANIFEST = ("/media/data/rPPG/Code/GitHub/Project_rPPG/Dataset/3_ROI/"
-                 "PURE-x-UBFC-x-Tokoyo/manifest_split_BALANCED.csv")
+EVAL_MANIFEST = ("C:\\Users\\RAZER\\Documents\\GitHub\\Project_rPPG_FNN\\Dataset\\Dataset\\3_ROI\\PURE-x-UBFC-x-Tokoyo_Manifest\\manifest_split_BALANCED.csv")
 
 # Training hyper-parameters (mirrors HIT_train.py).
 WIN_S                  = 8.0
@@ -127,8 +124,8 @@ SEED                   = 123
 TRAIN_WINDOWS_PER_SEQ  = 80
 VAL_MAX_WINDOWS_PER_SEQ= 80
 
-EPOCHS    = 300
-PATIENCE  = 30
+EPOCHS    = 50
+PATIENCE  = 10
 MIN_DELTA = 0.0
 
 # LIGHT_EVAL skips the heavy per-subject HTML sliders (signal + PSD) to keep the
