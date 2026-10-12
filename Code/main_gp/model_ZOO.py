@@ -1483,12 +1483,9 @@ SWEEP_ORDER = SWEEP_ORDER_FUSION_SE_VS_FDF
 # DEFAULT SWEEP ORDER — change this to select which family to train
 # ═════════════════════════════════════════════════════════════════════════════
 
-#SWEEP_ORDER = SWEEP_ORDER_FUSION_MI + SWEEP_ORDER_FUSION_6W + SWEEP_ORDER_FUSION_6W_RAW
-
 SWEEP_ORDER = [
-    "b1_3w_b2_raw_b3_mi__FDF",       #Current best model
+    "b1_3w_b2_raw_b3_mi__FDF",
 ]
-
 
 
 

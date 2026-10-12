@@ -1419,7 +1419,7 @@ SWEEP_ORDER_FUSION_6W_RAW = [
 #SWEEP_ORDER = SWEEP_ORDER_FUSION_MI + SWEEP_ORDER_FUSION_6W + SWEEP_ORDER_FUSION_6W_RAW
 
 SWEEP_ORDER = [
-    "three_branch_mi_se_attention",   # locked SE baseline
+    #"three_branch_mi_se_attention",   # locked SE baseline
     "three_branch_mi_freq_ffn",       # NEW frequency-domain fusion
 ]
 
