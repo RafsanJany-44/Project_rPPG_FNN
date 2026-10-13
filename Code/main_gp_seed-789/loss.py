@@ -857,7 +857,8 @@ def compute_loss(pred, target, fs=30.0, hr_hz=None, weights: dict = None, n_fft:
         #weights = {"ce": 1.0,"pearson": 0.2,"peaksharp": 0.5,}
         #weights = {"pearson": 1.0}
         # ── Stage A  — Pearson + concentration ──
-        weights = {"pearson": 1.0, "concentration": 1.0}
+        #weights = {"pearson": 1.0, "concentration": 1.0}
+        weights = {"pearson": 1.0}
         # ── Stage B — add harmonic ranking only if half/double errors persist ──
         #weights = {"pearson": 1.0, "concentration": 1.0, "harmrank": 0.5}
 

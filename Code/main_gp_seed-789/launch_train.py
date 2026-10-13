@@ -80,7 +80,7 @@ from model_ZOO import build_model, SWEEP_ORDER
 # Where every model's folder is created.
 
 RESULTS_ROOT = Path(
-    "/media/data/rPPG/Code/GitHub/Project_rPPG_Result//Results_Lab_Frequency_Fusion_GPT_seed-789"
+    "/media/data/rPPG/Code/GitHub/Project_rPPG_Result//Results_Lab_Frequency_Fusion_GPT_seed-789-OnlyPearson"
 )
 
 
